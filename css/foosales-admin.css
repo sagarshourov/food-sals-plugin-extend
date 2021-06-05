@@ -1,0 +1,172 @@
+.foosales-introduction {
+  max-width: 1000px;
+  width: 100%;
+}
+
+.foosales-introduction .foosales-connect {
+  background: #fff;
+  padding: 30px;
+  margin-bottom: 30px;
+  border-left: solid 4px #0090da;
+  padding-right: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.foosales-introduction .foosales-connect h3 {
+  margin: 0 0 0.5em;
+  padding: 0;
+  font-size: 1.5em;
+  line-height: 1.4em;
+}
+
+.foosales-introduction .foosales-connect p {
+  font-size: 1.2em;
+}
+
+.foosales-introduction .foosales-connect::before {
+  color: #d9eef9;
+  content: "\e01C";
+  display: block;
+  font-family: WooCommerce;
+  font-size: 152px;
+  line-height: 1;
+  position: absolute;
+  top: 55%;
+  right: -5%;
+  text-align: center;
+  width: 1em;
+}
+
+.foosales-connection-status div {
+  background-color: #f5f5f5;
+  border: 1px solid #dedede;
+  color: #666;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.8em;
+  padding: 0.5em 1em;
+  display: inline-block;
+  margin: 0 0 20px 0;
+}
+
+.foosales-connection-status.foosales-connection-error div {
+  border: 1px solid #cb2929;
+  color: #cb2929;
+}
+
+.foosales-connection-status.foosales-connection-warning div {
+  border: 1px solid #ce9f4e;
+  color: #444;
+  background: #fff0d5;
+}
+
+.foosales-connection-status span {
+  margin-left: 0.3em;
+  font-size: 1.2em;
+  line-height: 1.6em;
+}
+
+th.column-foosales_column_type,
+.foosales_column_type {
+  text-align: right !important;
+}
+.foosales_type_cash {
+  background: #d9e6cd !important;
+}
+.order-status.foosales_type_card {
+  background: #c0dfe1 !important;
+}
+.order-status.foosales_type_direct_bank_transfer {
+  background: #d8dbed !important;
+}
+.order-status.foosales_type_check_payment {
+  background: #edd9ed !important;
+}
+.order-status.foosales_type_cash_on_delivery {
+  background: #e1d5c0 !important;
+}
+.order-status.foosales_type_square {
+  background: #c1d0e1 !important;
+}
+.order-status.foosales_type_other {
+  background: #f5f5f5 !important;
+}
+.upload_image_button_foosales.button {
+  margin-left: 5px;
+  margin-top: 0;
+}
+.upload_reset_foosales {
+  line-height: 30px;
+  display: inline-block;
+  margin-left: 5px;
+}
+#foosales-settings-page p {
+  font-weight: normal;
+}
+#foosales-settings-page .text {
+  display: inline-block;
+  width: 400px;
+}
+#foosales-settings-page textarea {
+  height: 100px;
+  vertical-align: text-top;
+}
+#foosales-settings-page select[multiple] {
+  vertical-align: text-top;
+}
+#foosales-settings-page ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.foosales-tooltip {
+  vertical-align: text-top;
+}
+.foosales-tooltip-box {
+  background: transparent !important;
+  color: #fff !important;
+  max-width: 150px;
+  border: 0px solid #333 !important;
+  font-size: 0.8em !important;
+}
+.foosales-tooltip-box .ui-tooltip-content {
+  background: #333 !important;
+  color: #fff !important;
+  max-width: 150px;
+  text-align: center;
+  border-radius: 3px;
+  padding: 0.618em 1em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  margin-left: -50%;
+}
+.foosales-tooltip-box::before {
+  content: " ";
+  border-color: transparent;
+  border-style: solid;
+  border-width: 6px;
+  height: 0;
+  width: 0;
+  margin-top: -12px;
+  margin-left: 3px;
+  border-bottom-color: #333;
+  position: absolute;
+}
+
+table.wc_gateways tr[data-gateway_id^="foosales"] td.name {
+  background-image: url(../images/foosales-favicon.png);
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+  background-position: 0.9em 1em;
+  padding-left: 3.2em !important;
+}
+
+@media screen and (max-width: 40em) {
+  .foosales-introduction .foosales-connect {
+    padding: 20px;
+    padding-right: 0px;
+  }
+
+  .foosales-introduction .foosales-connect::before {
+    display: none;
+  }
+}
