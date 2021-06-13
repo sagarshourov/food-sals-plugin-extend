@@ -423,7 +423,7 @@ function fsfwc_do_get_all_products( $offset = 0 ) {
 	$max_products = get_option( 'globalFooSalesProductsPerPage', '500' );
 
 	$args = array(
-		'post_type'      => 'wpcargo_shipment',
+		'post_type'      => 'product',
 		'posts_per_page' => $max_products,
 		'offset'         => $offset * $max_products,
 		'fields'         => 'ids',
