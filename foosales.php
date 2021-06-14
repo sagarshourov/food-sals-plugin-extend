@@ -120,3 +120,8 @@ function fsfwc_remove_admin_caps() {
 }
 
 register_deactivation_hook( __FILE__, 'fsfwc_remove_admin_caps' );
+
+
+
+
+
