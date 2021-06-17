@@ -462,7 +462,7 @@ function fsfwc_do_get_all_products($offset = 0) {
     unset($args);
 
     $product_data['total_products'] = $count_query->post_count . '_total_products';
-
+    $count = $count_query->post_count ;
     $count_query = null;
 
     unset($count_query);
@@ -487,6 +487,8 @@ function fsfwc_do_get_all_products($offset = 0) {
     $query = null;
     $cat_names = null;
     $wc_tax = null;
+    
+ 
 
     unset($query, $cat_names, $wc_tax);
 
@@ -494,7 +496,7 @@ function fsfwc_do_get_all_products($offset = 0) {
 
 
     $jayParsedAry = [
-        "total_products" => "1_total_products",
+        "total_products" => $count."_total_products",
         "sale_product_ids" => "",
         "products" => $products,
     ];
@@ -518,21 +520,21 @@ function fsfwc_do_get_single_product($post_id, &$wc_tax, &$cat_names, $shop_tax 
 
     $product_title = (string) htmlspecialchars_decode(get_post_field('post_title', $post_id));
 
-    $product_price = get_post_meta($post_id, 'item_cost', true);
-
+    $product_price = (int) get_post_meta($post_id, 'item_cost', true);
+    $product_weight = (int) get_post_meta($post_id, 'weight', true);
 
 
     $product = [
         "pid" => (string) $post_id,
-        "pt" => $product_title,
+        "pt" => $product_title . ' (' . $product_weight . ' lbs)',
         "pd" => "",
         "ppi" => $product_price,
         "ppe" => $product_price,
         "prpi" => $product_price,
         "prpe" => $product_price,
-        "pspi" => "$".$product_price,
-        "pspe" => "$".$product_price,
-        "pph" => "",
+        "pspi" => $product_price,
+        "pspe" => $product_price,
+        "pph" => $product_price,
         "ptc" => "standard",
         "ptr" => "",
         "psm" => "",
@@ -896,7 +898,7 @@ function fsfwc_do_get_all_customers($offset = 0) {
     $max_users = 1000;
 
     $args = array(
-        'role__in' => array('customer', 'subscriber'),
+        'role__in' => array('customer', 'subscriber', 'wpcargo_client', 'wpcargo_employee','wpcargo_branch_manager' ),
         'number' => $max_users,
         'offset' => $offset * $max_users,
         'fields' => 'ids',
@@ -1308,6 +1310,9 @@ function fsfwc_do_create_new_order($order_data) {
     add_post_meta($order->get_id(), '_foosales_order_source', 'foosales_app', true);
     add_post_meta($order->get_id(), '_foosales_payment_method', $payment_method_key, true);
 
+
+
+
     //add_post_meta($order->get_id(), '_foosales_order_items', $order_items, true);
 
     $payment_method = fsfwc_get_payment_method_from_key($payment_method_key);
@@ -1390,7 +1395,7 @@ function fsfwc_do_create_new_order($order_data) {
         $product->set_name($product_title . ' (' . $product_weight . ' lbs)');
         $order->add_product($product, $order_item['oiq'], $product_args);
 
-
+        update_post_meta($order_item['pid'], 'payment_meta', $payment_method);
 
         $product_args = null;
 
